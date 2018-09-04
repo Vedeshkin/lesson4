@@ -20,7 +20,7 @@ public class SendMessageListenerImpl implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (messageField.getText().length() > 1)
-        chatBox.append( messageField.getText()+ "\n");
+            chatBox.append(messageField.getText() + "\n");
         messageField.setText("");
     }
 }

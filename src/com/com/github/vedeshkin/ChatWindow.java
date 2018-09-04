@@ -1,6 +1,5 @@
 package com.github.vedeshkin;
 
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,27 +8,31 @@ import java.awt.*;
  */
 public class ChatWindow extends JFrame {
 
-    public ChatWindow()  {
-        init();
-
-    }
-  private   JPanel mainPanel;
+    private JPanel mainPanel;
     private JButton sendMessage;
-  private JTextArea chatBox;
-  private JTextField messageField;
-  private JPanel bottomPanel;
-   private SendMessageListenerImpl sendMessageListener;
+    private JTextArea chatBox;
+    private JTextField messageField;
+    private JPanel bottomPanel;
+    private com.github.vedeshkin.SendMessageListenerImpl sendMessageListener;
+
+    public static void main(String[] args) {
+
+        ChatWindow chatWindow = new ChatWindow();
+    }
+
+    public ChatWindow() {
+        init();
+    }
 
 
     private void init() {
         setTitle("Simple chat application");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setBounds(400,100,500,500);
-
+        setBounds(400, 100, 500, 500);
 
 
         //
-        setLayout(new GridLayout(2,0));
+        setLayout(new GridLayout(2, 0));
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
@@ -46,14 +49,12 @@ public class ChatWindow extends JFrame {
         chatBox.setEditable(false);
 
 
-
-
         messageField = new JTextField(40);
         mainPanel.add(new JScrollPane(chatBox));
 
-        bottomPanel.add(messageField,BorderLayout.WEST);
-        bottomPanel.add(sendMessage,BorderLayout.EAST);
-        bottomPanel.setSize(500,100);
+        bottomPanel.add(messageField, BorderLayout.WEST);
+        bottomPanel.add(sendMessage, BorderLayout.EAST);
+        bottomPanel.setSize(500, 100);
 
         sendMessageListener = new SendMessageListenerImpl(chatBox, messageField);
         messageField.addActionListener(sendMessageListener);
